@@ -37,12 +37,13 @@ class Handler(val config: Config) : ChannelInboundHandlerAdapter() {
             if (requestInstance.uri().endsWith("app/v2/time/heartbeat")) {
                 val content = requestInstance.content().toString(Charset.forName("UTF-8"))
 
-                for (s in content.split("&")) {
-                    if ("client_request_uuid" == s.split("=")[0]) {
-                        clientRequestUUID = s.split("=")[1]
+                for (each in content.split("&")) {
+                    if ("client_request_uuid" == each.split("=")[0]) {
+                        clientRequestUUID = each.split("=")[1]
                     }
                 }
 
+                //清除数据让请求失败
                 requestInstance.headers().clear()
                 requestInstance.content().clear()
             }

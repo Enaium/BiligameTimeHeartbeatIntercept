@@ -35,9 +35,7 @@ object Server {
                             pipeline.addLast("httpObject", HttpObjectAggregator(1048576))
                             pipeline.addLast("request", Handler(config))
                         }
-                    }).bind(config.host, config.port).sync().addListener(ChannelFutureListener {
-                        config.send("Host:${config.host} Port:${config.port}")
-                    }).channel().closeFuture().sync()
+                    }).bind(config.host, config.port).sync().channel().closeFuture().sync()
             } catch (e: InterruptedException) {
                 e.printStackTrace()
             } finally {
