@@ -16,10 +16,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        val calendar = Calendar.getInstance()
         val logText = findViewById<TextView>(R.id.log)
         fun log(msg: String) {
+            val calendar = Calendar.getInstance()
             logText.append(
                 "\n[${calendar.get(Calendar.HOUR_OF_DAY)}" +
                         ":${calendar.get(Calendar.MINUTE)}" +
