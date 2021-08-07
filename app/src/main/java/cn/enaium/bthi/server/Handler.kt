@@ -9,6 +9,7 @@ import io.netty.channel.socket.SocketChannel
 import io.netty.handler.codec.http.*
 import java.lang.Exception
 import java.nio.charset.Charset
+import kotlin.math.log
 
 /**
  * @author Enaium
@@ -18,6 +19,7 @@ class Handler(val config: Config) : ChannelInboundHandlerAdapter() {
     private var port = 0
     private var channelFuture: ChannelFuture? = null
     private var clientRequestUUID: String? = null
+    private val utf8 = Charset.forName("UTF-8")
 
     @Throws(Exception::class)
     override fun channelRead(requestContext: ChannelHandlerContext, requestInstance: Any) {
@@ -35,7 +37,7 @@ class Handler(val config: Config) : ChannelInboundHandlerAdapter() {
             }
 
             if (requestInstance.uri().endsWith("app/v2/time/heartbeat")) {
-                val content = requestInstance.content().toString(Charset.forName("UTF-8"))
+                val content = requestInstance.content().toString(utf8)
 
                 for (each in content.split("&")) {
                     if ("client_request_uuid" == each.split("=")[0]) {

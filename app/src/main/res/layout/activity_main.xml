@@ -13,6 +13,9 @@
             android:layout_centerVertical="true"
             android:orientation="vertical" tools:ignore="MissingConstraints">
         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                  android:id="@+id/version"
+                  android:text="@string/version"/>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                   android:text="此软件为免费开源软件\n仅供学习交流\n开始后设置WIFI代理\n联系:"/>
         <LinearLayout
                 android:layout_width="wrap_content"
@@ -34,7 +37,6 @@
             </Button>
 
         </LinearLayout>
-
 
 
         <LinearLayout

@@ -1,10 +1,12 @@
 package cn.enaium.bthi
 
 import cn.enaium.bthi.server.Server
+import org.json.JSONArray
 import org.junit.Test
 
 import org.junit.Assert.*
 import java.net.InetAddress
+import java.net.URL
 
 /**
  * Example local unit test, which will execute on the development machine (host).
