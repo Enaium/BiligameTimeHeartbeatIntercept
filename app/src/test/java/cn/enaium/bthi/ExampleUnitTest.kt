@@ -15,7 +15,7 @@ import java.net.URL
  */
 fun main(array: Array<String>) {
     Server.start(object : Config(InetAddress.getLocalHost().hostAddress, 25560) {
-        override fun send(msg: String) {
+        override fun send(msg: String, logType: LogType) {
             println(msg)
         }
     })

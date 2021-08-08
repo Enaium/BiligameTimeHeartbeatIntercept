@@ -1,6 +1,7 @@
 package cn.enaium.bthi.server
 
 import cn.enaium.bthi.Config
+import cn.enaium.bthi.LogType
 import kotlin.Throws
 import io.netty.channel.EventLoopGroup
 import io.netty.channel.nio.NioEventLoopGroup
@@ -36,10 +37,10 @@ object Server {
                             pipeline.addLast("request", Handler(config))
                         }
                     }).bind(config.host, config.port).sync().addListener {
-                        config.send("启动成功")
+                        config.send("启动成功 Host:${config.host} Port:${config.port}")
                     }.channel().closeFuture().sync()
             } catch (e: InterruptedException) {
-                e.printStackTrace()
+                config.send(e.message.toString(), LogType.ERROR)
             } finally {
                 bossGroup.shutdownGracefully().sync()
                 workerGroup.shutdownGracefully().sync()

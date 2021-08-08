@@ -1,12 +1,14 @@
 package cn.enaium.bthi.server
 
 import cn.enaium.bthi.Config
+import cn.enaium.bthi.LogType
 import io.netty.bootstrap.Bootstrap
 import io.netty.buffer.Unpooled
 import io.netty.channel.*
 import kotlin.Throws
 import io.netty.channel.socket.SocketChannel
 import io.netty.handler.codec.http.*
+import java.io.IOException
 import java.lang.Exception
 import java.nio.charset.Charset
 import kotlin.math.log
@@ -131,7 +133,9 @@ class Handler(val config: Config) : ChannelInboundHandlerAdapter() {
     }
 
     override fun exceptionCaught(ctx: ChannelHandlerContext, cause: Throwable) {
-        config.send(cause.toString())
-        cause.printStackTrace()
+        if (cause !is IOException) {
+            config.send(cause.message.toString(), LogType.ERROR)
+            cause.printStackTrace()
+        }
     }
 }
