@@ -1,6 +1,6 @@
 # BiligameTimeHeartbeatIntercept B站游戏防沉迷时间拦截
 
-**由于新的防沉迷已经更改"仅在周五、周六、周日和法定节假日的20时至21时，向未成年人提供1小时游戏服务。"已经不是计时的方式来进行防沉迷 此项目已经失效**
+**由于新的防沉迷已经更改仅在周五、周六、周日和法定节假日的20时至21时，向未成年人提供1小时游戏服务。已经不是计时的方式来进行防沉迷 此项目已经失效**
 
 移步至[BiligameAddictionNotLimited](https://github.com/Enaium/BiligameAddictionNotLimited)
 
